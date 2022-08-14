@@ -11,6 +11,7 @@ console.log(`${day<10?"0"+day:day}.${month<10?"0"+month:month}.${year}`)
 console.log('-------------task 2-----------');
 
 let getDiffDays = (begin,end)=> {
+    const  DAY_IN_MILLISECONDS = 86400000;
     let startDate = +new Date(begin);
     let finishDate = +new Date(end);
     if (isNaN(startDate) || isNaN(startDate) ) {
@@ -21,7 +22,7 @@ let getDiffDays = (begin,end)=> {
         console.error( 'Error: your start date is later than');
         return
     }
-    let daysPassed = (finishDate - startDate)/86400000
+    let daysPassed = (finishDate - startDate)/DAY_IN_MILLISECONDS
     return daysPassed
 }
 
@@ -34,11 +35,12 @@ console.log("----------task 3--------------");
 
 let isWeekend = (dateStr)=>{
     let date = new Date(dateStr);
+    let inputedDay = date.getDay();
     if (isNaN(+date)) {
         console.error('Error: invalid date');
         return
     }
-    return (date.getDay() ===0 || date.getDay()===6)? true: false
+    return (inputedDay ===0 || inputedDay ===6)
 }
 
 console.log(isWeekend('2022-02-12')); // true
